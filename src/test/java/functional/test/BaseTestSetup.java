@@ -18,8 +18,8 @@ import functional.providers.TakeScreenshotOnFailRule;
 public abstract class BaseTestSetup extends WebDriverManager {
 
 	WebDriver driver;
-	private static final String pathToScreenshotDirForWindows = "\\test_reports\\functional\\screenshots";
-	private static final String pathToScreenshotDirForLinux = "/test_reports/functional/screenshots";
+	private static final String pathToScreenshotDirForWindows = "\\build\\test-results";
+	private static final String pathToScreenshotDirForMacAndLinux = "/build/test-results";
 	
 	String screenshotsDirectory = System.getProperty("user.dir")
 			+ getScreenShotDirectory().get(OS.getOsName());
@@ -36,7 +36,7 @@ public abstract class BaseTestSetup extends WebDriverManager {
 	public Map<String, String> getScreenShotDirectory(){
 		Map<String, String> pathToScreenshotDir = new HashMap<String, String>();
 		pathToScreenshotDir.put("Windows XP", pathToScreenshotDirForWindows);
-		pathToScreenshotDir.put("Linux", pathToScreenshotDirForLinux);
+		pathToScreenshotDir.put("Linux", pathToScreenshotDirForMacAndLinux);
 		return pathToScreenshotDir;
 	}
 
