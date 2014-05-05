@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="functional.test.DanMurphysHighValueUserJourneyTest" tests="1" failures="0" errors="0" timestamp="2014-05-05T04:36:04" hostname="Vijays-MacBook-Air.local" time="60.597">
+  <properties/>
+  <testcase name="guest_addingItemThroughRecommendedList_clickAndCollect_singleAddress_usingCC_qtyBottles" classname="functional.test.DanMurphysHighValueUserJourneyTest" time="60.597"/>
+  <system-out><![CDATA[Initialising Chrome
+]]></system-out>
+  <system-err><![CDATA[Starting ChromeDriver (v2.9.248307) on port 6850
+]]></system-err>
+</testsuite>

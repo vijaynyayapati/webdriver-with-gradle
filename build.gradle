@@ -1,0 +1,43 @@
+apply plugin: 'eclipse'
+apply plugin: 'java'
+
+repositories {
+    mavenCentral()
+}
+
+
+sourceSets {
+    functional {
+
+        compileClasspath = sourceSets.main.output + configurations.testRuntime
+        runtimeClasspath = output + sourceSets.main.output + configurations.testRuntime
+
+        java {
+            srcDir 'src/test/java/functional'
+        }
+        
+    }
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.5'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.seleniumhq.selenium:selenium-parent:2.41.0'
+    testCompile 'org.seleniumhq.selenium:selenium-java:2.41.0'
+    testCompile 'org.seleniumhq.selenium:selenium-support:2.41.0'
+    testCompile 'org.seleniumhq.selenium:selenium-ie-driver:2.41.0'
+    testCompile 'org.seleniumhq.selenium:selenium-firefox-driver:2.41.0'
+    testCompile 'org.seleniumhq.selenium:selenium-chrome-driver:2.41.0'
+    testCompile 'org.seleniumhq.selenium:selenium-remote-driver:2.41.0'
+    testCompile 'org.seleniumhq.selenium:selenium-api:2.41.0'
+    testCompile 'org.fluentlenium:fluentlenium-core:0.10.0'
+    testCompile 'org.fluentlenium:fluentlenium:0.5.4'
+    testCompile 'org.fluentlenium:fluentlenium-festassert:0.10.0'    
+}
+
+task functional(type: Test) {
+
+    testClassesDir = sourceSets.functional.output.classesDir
+    classpath = sourceSets.functional.runtimeClasspath
+
+}
