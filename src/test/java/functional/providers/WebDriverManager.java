@@ -37,6 +37,7 @@ public class WebDriverManager {
 
 	private static Browser create() throws Exception {
 		String driverType = getDriverType();
+		System.out.println("User dir" + System.getProperty("user.dir"));
 		System.out.println("Initialising " + driverType);
 		if (TYPE_TO_FACTORY_MAP.containsKey(driverType)) {
 			WebDriverFactory factory = TYPE_TO_FACTORY_MAP.get(driverType);

@@ -1,6 +1,9 @@
 package functional.providers;
 
 import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.apache.commons.io.FileUtils;
 import org.junit.rules.TestWatcher;
 import org.junit.runner.Description;
@@ -9,12 +12,24 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.TakesScreenshot;
 
 public class TakeScreenshotOnFailRule extends TestWatcher {
-	protected String screenshotDirectory;
 	protected WebDriver _driver;
-
-	public TakeScreenshotOnFailRule(WebDriver driver, String folder){
-		screenshotDirectory = folder;
+	private static final String pathToScreenshotDirForWindows = "\\build\\";
+	private static final String pathToScreenshotDirForMacAndLinux = "//build//";
+	
+	public TakeScreenshotOnFailRule(WebDriver driver){
 		_driver = driver;
+	}
+	
+	protected String screenshotDirectory = System.getProperty("user.dir")
+			+ getScreenShotDirectory().get(OS.getOsName());
+	
+	
+	public Map<String, String> getScreenShotDirectory(){
+		Map<String, String> pathToScreenshotDir = new HashMap<String, String>();
+		pathToScreenshotDir.put("Windows XP", pathToScreenshotDirForWindows);
+		pathToScreenshotDir.put("Mac OS X", pathToScreenshotDirForMacAndLinux);
+		pathToScreenshotDir.put("Linux", pathToScreenshotDirForMacAndLinux);
+		return pathToScreenshotDir;
 	}
 
 	@Override
@@ -45,7 +60,7 @@ public class TakeScreenshotOnFailRule extends TestWatcher {
 
 	private String getTestName(Description description) {
 		String name = description.getMethodName();
-		name = "\\" + name + ".png";
+		name = name + ".png";
 		return name;
 	}
 

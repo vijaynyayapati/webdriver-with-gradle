@@ -1,6 +1,8 @@
 apply plugin: 'eclipse'
 apply plugin: 'java'
 
+tasks.withType(Test) { systemProperty 'browser', System.getProperty('browser', 'Chrome') }
+
 repositories {
     mavenCentral()
 }
@@ -22,7 +24,6 @@ sourceSets {
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.5'
     testCompile 'junit:junit:4.11'
-    testCompile 'org.seleniumhq.selenium:selenium-parent:2.41.0'
     testCompile 'org.seleniumhq.selenium:selenium-java:2.41.0'
     testCompile 'org.seleniumhq.selenium:selenium-support:2.41.0'
     testCompile 'org.seleniumhq.selenium:selenium-ie-driver:2.41.0'
